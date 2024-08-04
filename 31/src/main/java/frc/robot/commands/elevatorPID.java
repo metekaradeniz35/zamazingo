@@ -14,6 +14,7 @@ public class elevatorPID extends CommandBase{
     public elevatorPID(elevatorSubsystems elevatorSubsystems, PIDController pidController, double distance) {
         this.elevatorSubsystems = elevatorSubsystems;
         this.pidController = new PIDController(2.11, 0,0); //rastgele
+        pidController.setSetPoint(distance);
         addRequirements(elevatorSubsystems);
     }
 
@@ -25,7 +26,8 @@ public class elevatorPID extends CommandBase{
 
     @Override 
     public void execute() {
-        
+        double speed = pidController.calculate(elevatorSubsystems.getEncoderMeter());
+        elevatorSubsystems.setMotor(speed);
     }
 
     @Override
