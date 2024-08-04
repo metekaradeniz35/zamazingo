@@ -29,6 +29,7 @@ public class RobotContainer {
   private void configureBindings() {
     new JoystickButton(joy1, 1).whileTrue(new elevatorCmd(elevatorSubsystems, 0.5)); // rastgele sayı
     new JoystickButton(joy1, 2).whileTrue(new pivotCmd(pivotSubsystems, 0.5));
+    new JoystickButton(joy1, 3).whileTrue(new elevatorPID(elevatorSubsystems, 0.5));
   }
 
   public Command getAutonomousCommand() {
